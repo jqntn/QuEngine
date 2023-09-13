@@ -1,5 +1,10 @@
 {
   "dependencies": [
-    "sdl2"
+    "sdl2",
+    "sdl2-image",
+    "sdl2-mixer",
+    "entt",
+    "glm",
+	{"name": "imgui", "features": ["sdl2-binding", "sdl2-renderer-binding"]}
   ]
 }

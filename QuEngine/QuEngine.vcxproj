@@ -125,6 +125,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -142,6 +143,8 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -152,10 +155,47 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\QuEngine\Components\QuRenderableComp.h" />
+    <ClInclude Include="include\QuEngine\QuBase64.h" />
+    <ClInclude Include="include\QuEngine\QuCamera.h" />
+    <ClInclude Include="include\QuEngine\Components\QuAnimSheetComp.h" />
+    <ClInclude Include="include\QuEngine\Managers\QuInputManager.h" />
     <ClInclude Include="include\QuEngine\QuEngine.h" />
+    <ClInclude Include="include\QuEngine\QuEvent.h" />
+    <ClInclude Include="include\QuEngine\QuGUI.h" />
+    <ClInclude Include="include\QuEngine\QuMath.h" />
+    <ClInclude Include="include\QuEngine\QuRenderer.h" />
+    <ClInclude Include="include\QuEngine\QuRenderer2D.h" />
+    <ClInclude Include="include\QuEngine\QuSound.h" />
+    <ClInclude Include="include\QuEngine\QuSprite.h" />
+    <ClInclude Include="include\QuEngine\QuSurface.h" />
+    <ClInclude Include="include\QuEngine\QuTexture.h" />
+    <ClInclude Include="include\QuEngine\QuTransform.h" />
+    <ClInclude Include="include\QuEngine\QuWindow.h" />
+    <ClInclude Include="include\QuEngine\QuRenderable.h" />
+    <ClInclude Include="include\QuEngine\QuAnimSheet.h" />
+    <ClInclude Include="include\QuEngine\Systems\QuAnimSystem.h" />
+    <ClInclude Include="include\QuEngine\Systems\QuRenderSystem.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="include\QuEngine\Managers\QuResourceManager.h" />
+    <ClCompile Include="src\Components\QuAnimSheetComp.cpp" />
+    <ClCompile Include="src\Managers\QuInputManager.cpp" />
     <ClCompile Include="src\QuEngine.cpp" />
+    <ClCompile Include="src\QuEvent.cpp" />
+    <ClCompile Include="src\QuGUI.cpp" />
+    <ClCompile Include="src\QuRenderer.cpp" />
+    <ClCompile Include="src\QuRenderer2D.cpp" />
+    <ClCompile Include="src\Managers\QuResourceManager.cpp" />
+    <ClCompile Include="src\QuSound.cpp" />
+    <ClCompile Include="src\QuSprite.cpp" />
+    <ClCompile Include="src\QuAnimSheet.cpp" />
+    <ClCompile Include="src\QuSurface.cpp" />
+    <ClCompile Include="src\QuTexture.cpp" />
+    <ClCompile Include="src\QuTransform.cpp" />
+    <ClCompile Include="src\QuWindow.cpp" />
+    <ClCompile Include="src\Systems\QuAnimSystem.cpp" />
+    <ClCompile Include="src\Systems\QuRenderSystem.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
