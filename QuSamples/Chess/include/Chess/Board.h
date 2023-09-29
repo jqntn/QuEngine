@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QuEngine/QuSprite.h>
+#include <array>
 #include <entt/entity/fwd.hpp>
 #include <glm/ext/vector_uint2.hpp>
 #include <memory>
@@ -9,24 +10,27 @@
 #include <unordered_map>
 #include <vector>
 
+#define idx(x, y) x + 8 * y
+
 class QuTexture;
 
-struct Cell
+struct Piece
 {
   enum class Type
   {
-    Empty,
-    Number,
-    Bomb,
-  } Type = Type::Empty;
-  enum class State
+    King,
+    Queen,
+    Bishop,
+    Knight,
+    Rook,
+    Pawn,
+  } Type = Type::Pawn;
+  enum class Color
   {
-    Veiled,
-    Unveiled,
-    Flagged,
-    Reserved,
-  } State = State::Veiled;
-  size_t BombCount = 0;
+    White,
+    Black,
+  } Color = Color::White;
+  std::string Owner;
 };
 
 class Board
@@ -38,20 +42,19 @@ public:
 
 private:
   QuSprite MakeTile(std::shared_ptr<QuTexture> texture, glm::ivec2 position);
-  void MakeGrid();
-  void PopulateGrid();
-  std::optional<entt::entity> GetHoveredCell();
-  std::vector<entt::entity> GetAdjacentCells(entt::entity centerCell);
-  void UnveilCell(entt::entity cell);
-  void FlagCell(entt::entity cell);
+  entt::entity MakePiece(std::string name);
+  void MakeBoard();
+  void PopulateBoard();
+  void ClearBoard();
+  void ShowBoard();
+  std::optional<entt::entity> GetHoveredPiece();
 
-  const glm::ivec2 TILE_SIZE{ 16, 16 };
-  const glm::ivec2 GRID_SIZE{ 16, 16 };
-  const glm::ivec2 CELL_SIZE{ 32, 32 };
+  const glm::ivec2 TILE_SIZE{ 64, 64 };
+  const glm::ivec2 PIECE_SIZE{ 64, 64 };
+  const glm::ivec2 BOARD_SIZE{ 8, 8 };
 
   std::unordered_map<std::string, QuSprite> m_Tiles;
+  std::array<std::optional<Piece>, 8 * 8> m_Board;
   entt::entity m_Camera;
-  bool m_IsGridPopulated = false;
-  float m_BombProba = .1f;
-  size_t m_FlagCount = 0;
+  entt::entity m_Selector;
 };

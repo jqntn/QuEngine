@@ -6,6 +6,7 @@
 #include <entt/entt.hpp>
 #include <glm/ext/matrix_clip_space.hpp>
 #include <glm/ext/matrix_float3x3.hpp>
+#include <ranges>
 
 QuRenderSystem::QuRenderSystem(entt::registry& registry)
   : m_Registry(registry)
@@ -29,7 +30,10 @@ QuRenderSystem::Run()
     throw std::runtime_error("Found No Camera");
 
   auto view = m_Registry.view<QuTransform, QuRenderableComp>();
+  auto entities = std::vector<entt::entity>();
   for (auto entity : view)
+    entities.push_back(entity);
+  for (auto entity : entities | std::views::reverse)
     view.get<QuRenderableComp>(entity).Renderable->Render(
       camMatrix * view.get<QuTransform>(entity).GetTransformMatrix());
 }

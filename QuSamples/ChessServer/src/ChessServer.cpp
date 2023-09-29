@@ -1,4 +1,6 @@
-﻿#define ENET_IMPLEMENTATION
+﻿#define _WINSOCK_DEPRECATED_NO_WARNINGS
+
+#define ENET_IMPLEMENTATION
 
 #include "ChessServer.h"
 #include "enet.h"

@@ -14,7 +14,7 @@ set(CMAKE_EXE_LINKER_FLAGS "-static")
 
 project ("ChessServer")
 
-add_executable (ChessServer "src/ChessServer.cpp")
+add_executable (ChessServer "../ChessServer/src/ChessServer.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET ChessServer PROPERTY CXX_STANDARD 20)

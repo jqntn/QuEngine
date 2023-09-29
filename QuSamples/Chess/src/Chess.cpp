@@ -8,10 +8,10 @@
 #include <QuEngine/Systems/QuRenderSystem.h>
 #include <glm/ext/vector_uint4.hpp>
 
-Minesweeper::Minesweeper()
+Chess::Chess()
 {
   auto quEngine = new QuEngine();
-  auto quWindow = new QuWindow("Minesweeper", { 512, 612 });
+  auto quWindow = new QuWindow("Chess", { 512, 712 });
   auto quRenderer = new QuRenderer2D(*quWindow);
   auto quGUI = new QuGUI(*quWindow, *quRenderer);
   auto quEvent = new QuEvent();

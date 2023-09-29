@@ -2,10 +2,10 @@
 
 #include <entt/entity/registry.hpp>
 
-class Minesweeper
+class Chess
 {
 public:
-  Minesweeper();
+  Chess();
 
   inline static entt::registry s_Registry;
 };

@@ -21,6 +21,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Chess", "QuSamples\Chess\Ch
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QuSamples", "QuSamples", "{1CE4C49C-E609-497F-8ECC-F4E0FECB4B2D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChessServer", "QuSamples\ChessServer\ChessServer.vcxproj", "{F43E2438-D442-4C80-BEA4-AE50EF826723}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -61,6 +63,14 @@ Global
 		{92343B85-36EA-4AC8-836A-CA34A042AA8A}.Release|x64.Build.0 = Release|x64
 		{92343B85-36EA-4AC8-836A-CA34A042AA8A}.Release|x86.ActiveCfg = Release|Win32
 		{92343B85-36EA-4AC8-836A-CA34A042AA8A}.Release|x86.Build.0 = Release|Win32
+		{F43E2438-D442-4C80-BEA4-AE50EF826723}.Debug|x64.ActiveCfg = Debug|x64
+		{F43E2438-D442-4C80-BEA4-AE50EF826723}.Debug|x64.Build.0 = Debug|x64
+		{F43E2438-D442-4C80-BEA4-AE50EF826723}.Debug|x86.ActiveCfg = Debug|Win32
+		{F43E2438-D442-4C80-BEA4-AE50EF826723}.Debug|x86.Build.0 = Debug|Win32
+		{F43E2438-D442-4C80-BEA4-AE50EF826723}.Release|x64.ActiveCfg = Release|x64
+		{F43E2438-D442-4C80-BEA4-AE50EF826723}.Release|x64.Build.0 = Release|x64
+		{F43E2438-D442-4C80-BEA4-AE50EF826723}.Release|x86.ActiveCfg = Release|Win32
+		{F43E2438-D442-4C80-BEA4-AE50EF826723}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +78,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{0832D109-647E-4427-8D57-91991CE2E4F4} = {1CE4C49C-E609-497F-8ECC-F4E0FECB4B2D}
 		{92343B85-36EA-4AC8-836A-CA34A042AA8A} = {1CE4C49C-E609-497F-8ECC-F4E0FECB4B2D}
+		{F43E2438-D442-4C80-BEA4-AE50EF826723} = {1CE4C49C-E609-497F-8ECC-F4E0FECB4B2D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {743EB4A6-9ACB-4EF7-943B-14D42999A5E0}

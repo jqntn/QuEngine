@@ -1,17 +1,6 @@
 ﻿{
   "configurations": [
     {
-      "name": "x64-Debug",
-      "generator": "Ninja",
-      "configurationType": "Debug",
-      "buildRoot": "${projectDir}\\out\\build\\${name}",
-      "installRoot": "${projectDir}\\out\\install\\${name}",
-      "cmakeCommandArgs": "",
-      "buildCommandArgs": "",
-      "ctestCommandArgs": "",
-      "inheritEnvironments": [ "msvc_x64_x64" ]
-    },
-    {
       "name": "aarch64-linux",
       "generator": "Ninja",
       "configurationType": "Release",
@@ -23,7 +12,7 @@
       "ctestCommandArgs": "",
       "inheritEnvironments": [ "linux_arm" ],
       "wslPath": "${defaultWSLPath}",
-      "cmakeToolchain": "C:/Users/jqntn/QuEngine/QuSamples/ChessServer/toolchains/aarch64-linux"
+      "cmakeToolchain": "C:/Users/jqntn/QuEngine/QuSamples/ChessServer_CMake/toolchains/aarch64-linux"
     }
   ]
 }

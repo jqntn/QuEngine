@@ -14,11 +14,11 @@ wWinMain(_In_ HINSTANCE hInstance,
 #endif
 {
 #ifdef _DEBUG
-  Minesweeper minesweeper;
+  Chess chess;
 #else
   SaveLogs();
   try {
-    Minesweeper minesweeper;
+    Chess chess;
   } catch (const std::exception& e) {
     LogError(e.what());
   }
