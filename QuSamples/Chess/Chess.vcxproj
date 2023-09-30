@@ -172,7 +172,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Chess\Board.h" />
+    <ClInclude Include="include\Chess\chess-engine\chess.hpp" />
     <ClInclude Include="include\Chess\Chess.h" />
+    <ClInclude Include="include\Chess\enet\enet.h" />
     <ClInclude Include="include\Chess\res\res.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

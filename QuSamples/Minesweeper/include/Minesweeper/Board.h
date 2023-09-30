@@ -52,6 +52,7 @@ private:
   std::unordered_map<std::string, QuSprite> m_Tiles;
   entt::entity m_Camera;
   bool m_IsGridPopulated = false;
-  float m_BombProba = .1f;
+  bool m_IsMuted = false;
+  float m_Difficulty = .1f;
   size_t m_FlagCount = 0;
 };

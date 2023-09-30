@@ -29,5 +29,8 @@
     <ClInclude Include="src\Protocol.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\chess.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

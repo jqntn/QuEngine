@@ -140,6 +140,7 @@
     <ClCompile Include="src\ChessServer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\chess.hpp" />
     <ClInclude Include="src\ChessServer.h" />
     <ClInclude Include="src\enet.h" />
     <ClInclude Include="src\Protocol.h" />

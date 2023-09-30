@@ -7,6 +7,7 @@
 #include <string>
 
 class QuEvent;
+class QuTransform;
 
 class QuInputManager
 {
@@ -33,6 +34,7 @@ public:
                         const std::string& action);
 
   static glm::ivec2 GetMousePosition();
+  static glm::ivec2 GetMouseWorldPosition(const QuTransform& camera);
 
 private:
   struct ActionData

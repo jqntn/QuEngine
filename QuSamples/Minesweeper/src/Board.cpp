@@ -24,7 +24,7 @@ Board::Board()
     auto hoveredCell = GetHoveredCell();
     if (!hoveredCell.has_value())
       return;
-    UnveilCell(hoveredCell.value());
+    UnveilCell(*hoveredCell);
   });
   QuInputManager::Instance().OnAction("MouseRight", [&](bool isDown) {
     if (!isDown)
@@ -32,10 +32,9 @@ Board::Board()
     auto hoveredCell = GetHoveredCell();
     if (!hoveredCell.has_value())
       return;
-    FlagCell(hoveredCell.value());
+    FlagCell(*hoveredCell);
   });
 
-  QuSound::SetVolume(-1, 30);
   auto mainTexture = QuResourceManager::Instance().GetTexture(
     "img-minesweeper", raw_arr(IMG_MINESWEEPER));
   m_Tiles.emplace("1", MakeTile(mainTexture, { 0, 1 }));
@@ -85,12 +84,19 @@ Board::Render()
     }
     {
       ImGui::TableNextColumn();
-      ImGui::Dummy({ 0, 40 });
+
+      ImGui::SetCursorPosX(windowSize.x - ImGui::CalcTextSize("Mute ").x - 30);
+      ImGui::Text("Mute");
+      ImGui::SameLine();
+      ImGui::Checkbox("##", &m_IsMuted);
+      QuSound::SetVolume(-1, m_IsMuted ? 0 : 30);
+
+      ImGui::Dummy({ 0, 20 });
       ImGui::SetCursorPosX(windowSize.x -
                            ImGui::CalcTextSize("Difficulty (0-1): ").x);
-      ImGui::Text("Difficulty (0-1): ");
-      ImGui::SetCursorPosX(windowSize.x - 100);
-      ImGui::InputFloat("##", &m_BombProba);
+      ImGui::Text("Difficulty (0-1):");
+      ImGui::SetCursorPosX(windowSize.x - ImGui::CalcItemWidth());
+      ImGui::InputFloat("###", &m_Difficulty);
     }
     ImGui::EndTable();
   }
@@ -139,7 +145,7 @@ Board::PopulateGrid()
     auto& cellData = cells.get<Cell>(cell);
     if (cellData.State == Cell::State::Reserved) {
       cellData.State = Cell::State::Veiled;
-    } else if (std::rand() / (float)RAND_MAX < m_BombProba) {
+    } else if (std::rand() / (float)RAND_MAX < m_Difficulty) {
       cellData.Type = Cell::Type::Bomb;
       bombs.push_back(cell);
     }
@@ -162,18 +168,15 @@ Board::PopulateGrid()
 std::optional<entt::entity>
 Board::GetHoveredCell()
 {
-  auto mousePosition = QuInputManager::GetMousePosition();
-  auto mouseVector = glm::ivec4(mousePosition.x, mousePosition.y, 0, 1);
-
-  auto& cameraTransform = Minesweeper::s_Registry.get<QuTransform>(m_Camera);
-  mouseVector = cameraTransform.GetTransformMatrix() * mouseVector;
-
+  auto mousePosition = QuInputManager::GetMouseWorldPosition(
+    Minesweeper::s_Registry.get<QuTransform>(m_Camera));
   auto cells = Minesweeper::s_Registry.view<Cell, QuTransform>();
   for (auto cell : cells) {
     auto cellPosition = cells.get<QuTransform>(cell).GetWorldPosition();
-    if (mouseVector.x >= cellPosition.x && mouseVector.y >= cellPosition.y &&
-        mouseVector.x < cellPosition.x + CELL_SIZE.x &&
-        mouseVector.y < cellPosition.y + CELL_SIZE.y)
+    if (mousePosition.x >= cellPosition.x &&
+        mousePosition.y >= cellPosition.y &&
+        mousePosition.x < cellPosition.x + CELL_SIZE.x &&
+        mousePosition.y < cellPosition.y + CELL_SIZE.y)
       return cell;
   }
   return std::nullopt;

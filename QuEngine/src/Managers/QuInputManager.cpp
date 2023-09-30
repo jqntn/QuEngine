@@ -1,7 +1,10 @@
 #include <QuEngine/Managers/QuInputManager.h>
 #include <QuEngine/QuEvent.h>
+#include <QuEngine/QuTransform.h>
 #include <SDL2/SDL_events.h>
+#include <glm/ext/matrix_float4x4.hpp>
 #include <glm/ext/vector_int2.hpp>
+#include <glm/ext/vector_int4.hpp>
 
 QuInputManager::~QuInputManager()
 {
@@ -87,6 +90,15 @@ QuInputManager::GetMousePosition()
   auto mousePosition = glm::ivec2();
   SDL_GetMouseState(&mousePosition.x, &mousePosition.y);
   return mousePosition;
+}
+
+glm::ivec2
+QuInputManager::GetMouseWorldPosition(const QuTransform& cameraTransform)
+{
+  auto mousePosition = QuInputManager::GetMousePosition();
+  auto mouseVector = glm::ivec4(mousePosition.x, mousePosition.y, 0, 1);
+  mouseVector = cameraTransform.GetTransformMatrix() * mouseVector;
+  return glm::ivec2(mouseVector);
 }
 
 QuInputManager&
