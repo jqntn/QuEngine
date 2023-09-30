@@ -15,8 +15,8 @@ Chess::Chess()
   auto quRenderer = new QuRenderer2D(*quWindow);
   auto quGUI = new QuGUI(*quWindow, *quRenderer);
   auto quEvent = new QuEvent();
-  auto quRenderSystem = QuRenderSystem(s_Registry);
-  auto board = Board();
+  auto quRenderSystem = new QuRenderSystem(s_Registry);
+  auto pBoard = new Board();
 
   quRenderer->SetClearColor({ 50, 50, 50, 50 });
   quEngine->StartCounters();
@@ -28,14 +28,18 @@ Chess::Chess()
     }
     quEngine->UpdateCounters();
 
+    pBoard->Tick();
+
     quRenderer->Clear();
     quGUI->NewFrame();
-    board.Render();
-    quRenderSystem.Run();
+    pBoard->Render();
+    quRenderSystem->Run();
     quGUI->Render();
     quRenderer->Present();
   }
 
+  delete pBoard;
+  delete quRenderSystem;
   delete quEvent;
   delete quGUI;
   delete quRenderer;

@@ -16,6 +16,8 @@ project ("ChessServer")
 
 add_executable (ChessServer "../ChessServer/src/ChessServer.cpp")
 
+target_compile_options(ChessServer PRIVATE -Wformat=0)
+
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET ChessServer PROPERTY CXX_STANDARD 20)
 endif()

@@ -1,24 +1,24 @@
 #pragma once
 
+#pragma warning(push)
+#pragma warning(disable : 4334)
+#pragma warning(disable : 4715)
+#include <Chess/chess-engine/chess.hpp>
+#pragma warning(pop)
+
 #include <QuEngine/QuSprite.h>
-#include <array>
-#include <bitset>
 #include <entt/entity/fwd.hpp>
-#include <glm/ext/vector_uint2.hpp>
-#include <memory>
-#include <optional>
-#include <string>
-#include <unordered_map>
-#include <vector>
 
 #define idx(x, y) x + 8 * y
-#define coord(i) glm::ivec2(i % 8, (i / 8) % 8)
-#define checked(c)                                                             \
-  (c = (m_Color == Color::White)                                               \
+#define crd(i) glm::ivec2(i % 8, (i / 8) % 8)
+#define cr(c)                                                                  \
+  (c = (m_pClient->Room.P1.Color == chess::Color::WHITE)                       \
          ? glm::ivec2(c.x, std::abs(BOARD_SIZE.y - c.y - 1))                   \
          : c)
 
 class QuTexture;
+class Client;
+struct Player;
 
 struct Selector
 {};
@@ -26,62 +26,48 @@ struct Indicator
 {};
 struct Piece
 {};
-enum class Color : uint8_t
+inline std::string
+operator|(chess::Color color, chess::PieceType type)
 {
-  White = 0,
-  Black = 1 << 0,
-};
-enum class Type : uint8_t
-{
-  King = 0,
-  Queen = 1 << 1,
-  Bishop = 1 << 2,
-  Knight = 1 << 3,
-  Rook = 1 << 4,
-  Pawn = 1 << 5,
-};
-inline uint8_t
-operator|(Color color, Type type)
-{
-  return (uint8_t)color | (uint8_t)type;
-}
-inline uint8_t
-operator&(uint8_t piece, Color color)
-{
-  return piece & (uint8_t)color;
-}
-inline uint8_t
-operator&(uint8_t piece, Type type)
-{
-  return piece & (uint8_t)type;
+  return std::to_string((uint8_t)color) + std::to_string((uint8_t)type);
 }
 
 class Board
 {
 public:
   Board();
+  ~Board();
 
+  void Tick();
   void Render();
+  void RenderPlayer(const Player& player);
 
 private:
   QuSprite MakeTile(std::shared_ptr<QuTexture> texture, glm::ivec2 position);
   void MakeBoard();
-  void PopulateBoard();
-  void ClearBoard();
   void ShowBoard();
-  void FindLegalMoves(std::optional<entt::entity> piece);
   void ShowIndicators();
+  void FindLegalMoves(std::optional<entt::entity> piece);
+  void MakeMove(const chess::Move& move);
   std::optional<entt::entity> GetHoveredPiece();
+  glm::ivec2 GetHoveredSquare();
 
   const glm::ivec2 TILE_SIZE{ 64, 64 };
   const glm::ivec2 PIECE_SIZE{ 64, 64 };
   const glm::ivec2 BOARD_SIZE{ 8, 8 };
 
   std::unordered_map<std::string, QuSprite> m_Tiles;
-  std::array<std::optional<uint8_t>, 8 * 8> m_Board;
+  chess::Board m_Board;
   entt::entity m_Camera;
 
-  bool m_canPlay = true;
-  Color m_Color = Color::White;
-  std::pair<std::optional<entt::entity>, std::vector<uint8_t>> m_LegalMoves;
+  std::pair<std::optional<entt::entity>, std::vector<chess::Move>> m_LegalMoves;
+  std::unordered_map<chess::Color, std::string> m_LastMove;
+  std::pair<chess::GameResultReason, chess::GameResult> m_GameState = {
+    chess::GameResultReason::NONE,
+    chess::GameResult::NONE
+  };
+
+  Client* m_pClient = nullptr;
+  bool m_IsMakeBoardDirty = false;
+  chess::Move m_ReceivedMove;
 };

@@ -76,6 +76,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
   </PropertyGroup>
+  <PropertyGroup Label="Vcpkg">
+    <VcpkgEnableManifest>true</VcpkgEnableManifest>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -141,8 +144,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\chess.hpp" />
-    <ClInclude Include="src\ChessServer.h" />
     <ClInclude Include="src\enet.h" />
+    <ClInclude Include="src\json.hpp" />
+    <ClInclude Include="src\json_fwd.hpp" />
+    <ClInclude Include="src\magic_enum.hpp" />
     <ClInclude Include="src\Protocol.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

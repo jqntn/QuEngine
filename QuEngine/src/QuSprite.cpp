@@ -2,7 +2,6 @@
 #include <QuEngine/QuSprite.h>
 #include <SDL2/SDL_render.h>
 #include <glm/ext/matrix_float3x3.hpp>
-#include <vector>
 
 QuSprite::QuSprite(std::shared_ptr<QuTexture> texture)
   : QuSprite(std::move(texture), texture->GetRect())

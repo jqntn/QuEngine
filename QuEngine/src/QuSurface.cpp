@@ -1,6 +1,5 @@
 #include <QuEngine/QuSurface.h>
 #include <SDL2/SDL_image.h>
-#include <SDL2/SDL_surface.h>
 #include <stdexcept>
 
 QuSurface::QuSurface(uint32_t w, uint32_t h)

@@ -2,12 +2,8 @@
 
 #include <QuEngine/QuSprite.h>
 #include <entt/entity/fwd.hpp>
-#include <glm/ext/vector_uint2.hpp>
-#include <memory>
 #include <optional>
-#include <string>
 #include <unordered_map>
-#include <vector>
 
 class QuTexture;
 

@@ -1,5 +1,4 @@
 #include <QuEngine/Components/QuAnimSheetComp.h>
-#include <QuEngine/QuAnimSheet.h>
 #include <QuEngine/Systems/QuAnimSystem.h>
 #include <entt/entt.hpp>
 

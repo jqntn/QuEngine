@@ -2,7 +2,6 @@
 #include <QuEngine/QuEngine.h>
 #include <QuEngine/QuEvent.h>
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 #include <fstream>
 #include <iostream>

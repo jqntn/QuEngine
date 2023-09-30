@@ -3,8 +3,6 @@
 #include <QuEngine/QuTransform.h>
 #include <SDL2/SDL_events.h>
 #include <glm/ext/matrix_float4x4.hpp>
-#include <glm/ext/vector_int2.hpp>
-#include <glm/ext/vector_int4.hpp>
 
 QuInputManager::~QuInputManager()
 {

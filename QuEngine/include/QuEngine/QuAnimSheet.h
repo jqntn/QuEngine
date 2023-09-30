@@ -1,7 +1,6 @@
 #pragma once
 
 #include <glm/ext/vector_uint2.hpp>
-#include <optional>
 #include <string>
 #include <unordered_map>
 

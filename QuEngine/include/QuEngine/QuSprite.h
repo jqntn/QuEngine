@@ -2,7 +2,6 @@
 
 #include <QuEngine/QuRenderable.h>
 #include <QuEngine/QuTexture.h>
-#include <SDL2/SDL_rect.h>
 #include <glm/ext/vector_float2.hpp>
 #include <memory>
 

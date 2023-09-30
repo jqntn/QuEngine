@@ -1,7 +1,6 @@
 #include <QuEngine/Managers/QuResourceManager.h>
 #include <QuEngine/QuEngine.h>
 #include <QuEngine/QuSound.h>
-#include <QuEngine/QuSurface.h>
 #include <QuEngine/QuTexture.h>
 
 QuResourceManager::~QuResourceManager()

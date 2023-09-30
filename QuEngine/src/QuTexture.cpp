@@ -1,7 +1,6 @@
 #include <QuEngine/QuRenderer.h>
 #include <QuEngine/QuSurface.h>
 #include <QuEngine/QuTexture.h>
-#include <SDL2/SDL_rect.h>
 #include <SDL2/SDL_render.h>
 #include <stdexcept>
 

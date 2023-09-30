@@ -2,7 +2,6 @@
 
 #include <QuEngine/QuAnimSheet.h>
 #include <memory>
-#include <string>
 
 class QuSprite;
 class QuAnimSystem;

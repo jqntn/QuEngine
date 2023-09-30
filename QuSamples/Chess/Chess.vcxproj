@@ -167,15 +167,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Board.cpp" />
+    <ClCompile Include="src\Client.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Chess.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\ChessServer\src\Protocol.h" />
     <ClInclude Include="include\Chess\Board.h" />
     <ClInclude Include="include\Chess\chess-engine\chess.hpp" />
     <ClInclude Include="include\Chess\Chess.h" />
+    <ClInclude Include="include\Chess\Client.h" />
     <ClInclude Include="include\Chess\enet\enet.h" />
+    <ClInclude Include="include\Chess\json\json.hpp" />
+    <ClInclude Include="include\Chess\json\json_fwd.hpp" />
     <ClInclude Include="include\Chess\res\res.h" />
+    <ClInclude Include="include\Chess\utils\magic_enum.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

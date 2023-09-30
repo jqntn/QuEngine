@@ -7,8 +7,6 @@
 #include <QuEngine/QuCamera.h>
 #include <QuEngine/QuSound.h>
 #include <QuEngine/QuTransform.h>
-#include <glm/ext/matrix_float4x4.hpp>
-#include <glm/ext/vector_int4.hpp>
 #include <imgui.h>
 
 using namespace std::string_literals;

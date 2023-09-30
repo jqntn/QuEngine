@@ -1,6 +1,5 @@
 #include <QuEngine/QuTransform.h>
 #include <glm/gtx/rotate_vector.hpp>
-#include <glm/mat3x3.hpp>
 
 QuTransform::QuTransform(const QuTransform& other)
 {

@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-std::array<int32_t, 0xFF>
+constexpr std::array<int32_t, 0xFF>
 b64_table()
 {
   auto table = std::array<int32_t, 0xFF>();
